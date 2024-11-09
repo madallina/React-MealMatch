@@ -46,7 +46,7 @@ const getMealRecipe = async(id)=>{
     <>
     <h1>Meal Match</h1>
     <SearchBar onSearch={getMealList} />
-    
+    <MealList meals={meals} onMealClick={getMealRecipe} />
     </>
   )
 }

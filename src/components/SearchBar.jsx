@@ -13,6 +13,7 @@ const SearchBar = ({onSearch})=>{
         <div className='search-bar'>
             <input 
             type="text"
+            id="input-field"
             placeholder='Enter ingredient'
             value={ingredient}
             onChange={(e)=>setIngredient(e.target.value)}
