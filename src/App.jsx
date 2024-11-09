@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchBar from "./components/SearchBar";
 import MealList from "./components/MealList";
@@ -32,6 +33,7 @@ const getMealList = async(ingredient) =>{
   return (
     <>
     <h1>Meal Match</h1>
+    <SearchBar onSearch={getMealList} />
     
     </>
   )
