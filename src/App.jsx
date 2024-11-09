@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SearchBar from "./components/SearchBar";
+import MealList from "./components/MealList";
+import MealRecipeModal from "./components/MealRecipeModal";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+const [meals,setMeals]= useState([]);
+const [mealsDetails, setMealDetails]= useState(null);
+const [error, setError] = useState('');
 
+const getMealList = async(ingredient) =>{
+  try{
+    const response = await fetch(
+      'https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}'
+    );
+    const data = await response.json();
+    if(data.meals){
+      setMeals(data.meals);
+      setError("");
+    } else {
+      setMeals([]);
+      setError("Sorry, we didn't find any meal!")
+    }
+  } catch(error){
+    console.error('Error fetching meals:', error);
+    setMeals([]);
+    setError("Sorry , something went wrong!");
+  }
+};
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <h1>Meal Match</h1>
+    
     </>
   )
 }
