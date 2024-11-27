@@ -1,20 +1,22 @@
-
-const MealItem = ({meal, onClick})=>{
-
-return (
-<div className="meal-tem" data-id={meal.idMeal} onClick={()=>onClick(meal.idMeal)}>
-    <div className="meal-img">
+const MealItem = ({ meal, onClick }) => {
+  return (
+    <div
+      className="meal-item"
+      data-id={meal.idMeal}
+      
+    >
+      <div className="meal-item__image">
         <img src={meal.strMealThumb} alt={meal.strMeal} />
-
+      </div>
+      <div className="meal-item__details">
+        <h3 className="meal-item__name">{meal.strMeal}</h3>
+        <button 
+        className="meal-item__button"
+        onClick={() => onClick(meal.idMeal)}
+        >Get recipe</button>
+      </div>
     </div>
-    <div className="meal-name">
-        <h3>{meal.strMeal}</h3>
-        <button className="recipe-btn">Get recipe</button>
-
-    </div>
-
-</div>
-);
+  );
 };
 
-export default MealItem ;
+export default MealItem;

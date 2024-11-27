@@ -8,8 +8,11 @@ import MealRecipeModal from "./components/MealRecipeModal";
 
 function App() {
 const [meals,setMeals]= useState([]);
-const [mealsDetails, setMealDetails]= useState(null);
+const [mealDetails, setMealDetails]= useState(null);
 const [error, setError] = useState('');
+const closeMealDetails=()=>{
+    setMealDetails(null);
+  };
 
 const getMealList = async(ingredient) =>{
   try{
@@ -44,9 +47,16 @@ const getMealRecipe = async(id)=>{
 };
   return (
     <>
+    <div className='app__container'>
+
     <h1>Meal Match</h1>
     <SearchBar onSearch={getMealList} />
     <MealList meals={meals} onMealClick={getMealRecipe} />
+    <MealRecipeModal 
+      mealDetails ={mealDetails}
+      onClose={closeMealDetails}
+    />
+    </div>
     </>
   )
 }

@@ -1,0 +1,18 @@
+.modal__image{
+    height: 250px;
+    width: 300px;
+}
+.modal__container {
+    position: fixed;
+    height: 70%;
+    width: 80%;
+    background-image: radial-gradient(rgb(161, 193, 241),rgb(247, 149, 250) );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow:auto;
+
+  }
+  
+
+ 
